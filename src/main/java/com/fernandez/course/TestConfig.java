@@ -4,6 +4,7 @@ package com.fernandez.course;
 import java.time.Instant;
 import java.util.Arrays;
 
+import com.fernandez.course.entities.enums.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -28,9 +29,9 @@ public class TestConfig implements CommandLineRunner{
 		User  u2 = new User(null, "Alex Green", "alex@gmail.com", "999998888", "654321");
 		
 		
-		Order o1 = new Order(null, Instant.parse("2026-01-20T19:53:07Z"), u1);
-		Order o2 = new Order(null, Instant.parse("2025-09-20T09:53:07Z"), u2);
-		Order o3 = new Order(null, Instant.parse("2024-11-20T19:58:07Z"), u1);
+		Order o1 = new Order(null, Instant.parse("2026-01-20T19:53:07Z"), OrderStatus.CANCELED,u1);
+		Order o2 = new Order(null, Instant.parse("2025-09-20T09:53:07Z"), OrderStatus.PAID, u2);
+		Order o3 = new Order(null, Instant.parse("2024-11-20T19:58:07Z"), OrderStatus.SHIPPED, u1);
 		
 	    userRepository.saveAll(Arrays.asList(u1, u2));
 	    orderRepository.saveAll(Arrays.asList(o1, o2, o3));
